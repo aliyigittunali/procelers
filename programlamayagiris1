@@ -1,0 +1,124 @@
+// yıldızlar.cpp : Bu dosya 'main' işlevi içeriyor. Program yürütme orada başlayıp biter.//
+/****************************************************************************
+**
+**				ÖĞRENCİ ADI..................:Bilal NİŞANCI
+**				ÖĞRENCİ NUMARASI.............:G130910052
+**				DERS GRUBU...................:2-B
+****************************************************************************/
+
+
+#include "pch.h"
+#include <iostream>
+#include <iomanip>
+#include <Windows.h>
+using namespace std;
+int main()
+{
+	int satir,sutun;
+
+	//satır sutun kontrolü
+	do 
+	{
+		//satır işlemi
+		cout << "satir: ";	cin >> satir;
+
+		while (satir < 5 || satir > 15)
+		{
+			cout << "satir numarasi hatali.....tekrar deneyiniz.." << endl;
+			cout << "satir: ";	cin >> satir;
+		}
+
+		//sütun işlemi
+		cout << "sutun: ";	cin >> sutun;
+
+		while (sutun < 5 || sutun > 40)
+		{
+			cout << "sutun numarasi hatali.....tekrar deneyiniz.." << endl;
+			cout << "sutun: ";	cin >> sutun;
+		}
+		if (sutun != 2 * satir) {
+			cout << "sutun sayisi satir sayisinin 2 katı olmalıdır.....tekrar deneyiniz.." << endl;
+		}
+	} while (sutun != 2 * satir);
+
+	//ilk şekil
+	int mesafe = 1;//sutunlar arası mesafe
+	for (int i = 1; i < satir; i++)
+	{
+		if (i==1)//ilk satırsa
+		{
+			for (int j = 0; j < sutun; j++)
+			{
+				cout << "*";
+				Sleep(100);
+			}
+		}
+		
+		else//ilk ve son satır değilse
+		{
+			cout << "*";
+			Sleep(100);
+			cout << setw((sutun / 2) - i);
+			Sleep(100);
+			cout << "*" << setw((mesafe));
+			Sleep(100);
+			cout << "*" << setw((sutun / 2) - i) << "*";
+			Sleep(100);
+		}
+		cout << endl;
+		mesafe += 2;
+
+		if (i == satir-1)//eğer son satırsa
+		{
+
+			for (int k = 0; k < sutun; k++)
+			{
+				cout << "*";
+				Sleep(100);
+			}
+			
+		}
+	}
+	cout << endl << endl;
+	Sleep(100);
+
+	//2. şekil
+	for (int i = 1; i < satir; i++)
+	{
+		if (i == 1)//eğer ilk satırsa
+		{
+			for (int j = 0; j < sutun; j++)
+			{
+				cout << "*";
+				Sleep(100);
+			}
+
+		}
+
+		else//ilk ve son satır değilse
+		{
+			cout << "*"; 
+			Sleep(100);  
+			cout << setw(i - 1); 
+			Sleep(100);
+			cout << "*"; 
+			Sleep(100);
+			cout << setw(sutun - 2 * i + 1); 
+			Sleep(100);
+			cout<<"*" << setw(i-1) << "*";
+			Sleep(100);
+			
+		}
+		cout << endl;
+		Sleep(100);
+		if (i == satir - 1)//eğer son satırsa
+		{
+			for (int k = 0; k < sutun; k++)
+			{
+				cout << "*";
+				Sleep(100);
+			}	
+		}
+	}
+}
+
